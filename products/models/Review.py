@@ -1,10 +1,27 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import TextChoices
 
 from products.models import Product
 
 
+class CategoryChoice(TextChoices):
+    ONE = '1', '1'
+    TWO = '2', '2'
+    THREE = '3', '3'
+    FOUR = '4', '4'
+    FIVE = '5', '5'
+
+
 class Review(models.Model):
+    # RATING = (
+    #     ('one', '1'),
+    #     ('two', '2'),
+    #     ('three', '3'),
+    #     ('four', '4'),
+    #     ('five', '5')
+    # )
     author = models.ForeignKey(
         verbose_name='Автор',
         to=get_user_model(),
@@ -27,12 +44,11 @@ class Review(models.Model):
         null=False,
         blank=False
     )
-    rating = models.IntegerField(
-        choices=[(i, i) for i in range(1, 6)],
-        default=1,
+    rating = models.CharField(
+        choices=CategoryChoice.choices,
+        default=CategoryChoice.ONE,
         verbose_name='Оценка',
-        null=False,
-        blank=False
+        max_length=1
     )
 
     def __str__(self):
