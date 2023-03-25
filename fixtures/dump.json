@@ -288,11 +288,64 @@
   }
 },
 {
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add profile",
+    "content_type": 9,
+    "codename": "add_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change profile",
+    "content_type": 9,
+    "codename": "change_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete profile",
+    "content_type": 9,
+    "codename": "delete_profile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view profile",
+    "content_type": 9,
+    "codename": "view_profile"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "user",
+    "permissions": [
+      34,
+      36,
+      16,
+      28,
+      29,
+      30,
+      31,
+      32
+    ]
+  }
+},
+{
   "model": "auth.user",
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$390000$5KKeMAtetDNv9LnO5xHwq9$PRimUy8N/PsrU17q9aBgYl45j5eXGrfXAF/MwEH9p2E=",
-    "last_login": "2023-03-25T08:01:47.661Z",
+    "last_login": "2023-03-25T12:50:00.032Z",
     "is_superuser": true,
     "username": "root",
     "first_name": "",
@@ -302,6 +355,46 @@
     "is_active": true,
     "date_joined": "2023-03-25T07:59:07.477Z",
     "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$OaKUUyAbccWY3eN6ymoclB$IiVQgJ0KxZB4BUi+K1WfCtTgvv1QQoVM/2Fei6YeJjk=",
+    "last_login": "2023-03-25T12:18:28.765Z",
+    "is_superuser": false,
+    "username": "john",
+    "first_name": "test",
+    "last_name": "testl",
+    "email": "test@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-03-25T11:53:06Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$SzEAo7NpImgnq853KgOSFV$mB8UiPHVgjp3XZz3V2BYQwvBrCqwwqOz5UXMR4oQios=",
+    "last_login": "2023-03-25T12:53:57.786Z",
+    "is_superuser": false,
+    "username": "jane",
+    "first_name": "jane",
+    "last_name": "doe",
+    "email": "jane@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-03-25T12:53:13Z",
+    "groups": [
+      1
+    ],
     "user_permissions": []
   }
 },
@@ -346,6 +439,16 @@
   }
 },
 {
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "name": "Airpods 3 new",
+    "category": "electronics",
+    "description": "airpods description",
+    "image": ""
+  }
+},
+{
   "model": "products.review",
   "pk": 1,
   "fields": {
@@ -383,6 +486,66 @@
     "product": 4,
     "text": "Вкусный!!!!!",
     "rating": "4"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 6,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "Топ",
+    "rating": "5"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 13,
+  "fields": {
+    "author": 2,
+    "product": 6,
+    "text": "asdads",
+    "rating": "4"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 16,
+  "fields": {
+    "author": 3,
+    "product": 6,
+    "text": "great!",
+    "rating": "5"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 17,
+  "fields": {
+    "author": 3,
+    "product": 4,
+    "text": "nice",
+    "rating": "3"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 18,
+  "fields": {
+    "author": 3,
+    "product": 1,
+    "text": "love it <3 10/10",
+    "rating": "5"
+  }
+},
+{
+  "model": "products.review",
+  "pk": 19,
+  "fields": {
+    "author": 3,
+    "product": 3,
+    "text": "it hhelped a lot",
+    "rating": "5"
   }
 }
 ]

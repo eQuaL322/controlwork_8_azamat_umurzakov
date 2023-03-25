@@ -101,10 +101,3 @@ class UserChangeView(UpdateView):
 
     def get_success_url(self):
         return reverse('profile', kwargs={'pk': self.object.pk})
-
-# def register_view(request, *args, **kwargs):
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)

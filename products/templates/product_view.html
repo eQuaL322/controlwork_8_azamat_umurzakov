@@ -35,11 +35,20 @@
     <div class="d-flex justify-content-center">
         <div class="comment">
             {% for review in product.review.all %}
-                <h5>Отзыв пользователя - {{ review.author }}</h5>
+                <h5>Отзыв пользователя - <a href="{% url 'profile' review.author.pk %}">{{ review.author }}</a></h5>
                 <p>Текст: {{ review.text }}</p>
                 <p>Оценка: {{ review.rating }}</p>
+                <p>Email: {{ review.author.email }}</p>
+                {% if review.author == request.user %}
+                    <a href="{% url 'review_update_view' review.pk %}" class="btn btn-success mb-4">Редактировать
+                        отзыв</a>
+                    <form action="{% url 'review_delete_view' review.pk %}" method="post">
+                        {% csrf_token %}
+                        <p class="d-inline"><input class="btn btn-danger" type="submit" value="Удалить
+                        отзыв"></p>
+                    </form>
+                {% endif %}
             {% endfor %}
-
         </div>
     </div>
 {% endblock %}

@@ -55,4 +55,4 @@ class UserChangeForm(forms.ModelForm):
 class ProfileChangeForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('avatar', 'birth_date')
+        fields = ('birth_date',)

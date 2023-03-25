@@ -1,6 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
-from django.urls import reverse
-from django.views.generic import ListView, CreateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from products.forms import ReviewForm
 from products.models import Review, Product
@@ -12,7 +13,7 @@ class ReviewListView(ListView):
     context_object_name = 'reviews'
 
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     template_name = 'reviews/product_review_add.html'
     model = Review
     form_class = ReviewForm
@@ -29,10 +30,18 @@ class ReviewCreateView(CreateView):
         return super().form_valid(form)
 
 
-# class ReviewCreateView(CreateView):
-#     model = Review
-#     form_class = ReviewForm
-#     template_name = 'reviews/product_review_add.html'
-#
-#     def get_success_url(self):
-#         return reverse('index')
+class ReviewUpdateView(UpdateView):
+    template_name = 'reviews/review_update.html'
+    form_class = ReviewForm
+    model = Review
+    context_object_name = 'reviews'
+
+    def get_success_url(self):
+        return reverse('index')
+
+
+class ReviewDeleteView(DeleteView):
+    template_name = 'product_view.html'
+    context_object_name = 'review'
+    model = Review
+    success_url = reverse_lazy('index')

@@ -20,22 +20,24 @@
                 <a class="link-dark" href="{% url 'product_add_view' %}">Добавить продукт</a>
             </li>
             {% if user.is_authenticated %}
-                <li>
+                <li class="d-inline mr-4">
                     <a href="{% url 'profile' user.pk %}" class="link-dark">Профиль</a>
                 </li>
-                <li>
+                <li class="d-inline mr-4">
+                    Привет, {{ user.username }}
+                </li>
+                <li class="d-inline mr-4">
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
                         <input type="submit" class="link-dark" value="Выйти">
                     </form>
                 </li>
-                <li>
-                    Привет, {{ user.username }}
-                </li>
             {% else %}
-                <li>
-                    <a href="{% url 'login' %}" class="link-dark">Войти</a>
-                    <a href="{% url 'register' %}" class="link-dark">Зарегистрироваться</a>
+                <li class="d-inline mr-4">
+                    <a href="{% url 'login' %}" class="link-dark d-inline mr-4">Войти</a>
+                </li>
+                <li class="d-inline mr-4">
+                    <a href="{% url 'register' %}" class="link-dark d-inline mr-4">Зарегистрироваться</a>
                 </li>
             {% endif %}
             <li class="d-inline mr-4">

@@ -9,12 +9,6 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Профиль пользователя',
     )
-    avatar = models.ImageField(
-        null=True,
-        blank=True,
-        upload_to='user_pic',
-        verbose_name='Аватар'
-    )
     birth_date = models.DateField(
         null=True,
         blank=True,
