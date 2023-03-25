@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mt-5 d-flex justify-content-center">
+        <div class="col-xxl-3 card text-dark bg-light my-5" style="max-width: 840px;">
+            <div class="row g-0">
+                <div class="col-md-4 d-flex">
+                    {% if product.image %}
+                        <img src="{{ product.image }}" class="img-fluid rounded-start" alt="#">
+                    {% else %}
+                        <img src="https://via.placeholder.com/450x450" class="img-fluid rounded-start" alt="#">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Название: {{ product.name }}</h5>
+                        <p class="card-text">Категория: {{ product.category }}</p>
+                        <p class="card-text">Описание: {{ product.description }}</p>
+                    </div>
+                    <div class="ml-3">
+                        <form action="{% url 'product_delete_view' product.pk %}" method="post">
+                            {% csrf_token %}
+                            <p class="d-inline"><a class="btn btn-primary"
+                                                   href="{% url 'product_update_view' product.pk %}">Редактировать</a>
+                            </p>
+                            <p class="d-inline"><input class="btn btn-danger" type="submit" value="Удалить"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
