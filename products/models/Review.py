@@ -15,13 +15,6 @@ class CategoryChoice(TextChoices):
 
 
 class Review(models.Model):
-    # RATING = (
-    #     ('one', '1'),
-    #     ('two', '2'),
-    #     ('three', '3'),
-    #     ('four', '4'),
-    #     ('five', '5')
-    # )
     author = models.ForeignKey(
         verbose_name='Автор',
         to=get_user_model(),

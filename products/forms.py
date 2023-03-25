@@ -1,6 +1,6 @@
 from django import forms
 
-from products.models import Product
+from products.models import Product, Review
 
 
 class ProductForm(forms.ModelForm):
@@ -11,6 +11,16 @@ class ProductForm(forms.ModelForm):
             'name': 'Наименование товара',
             'description': 'Описание товара',
             'image': 'Фото товара'
+        }
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text', 'rating']
+        labels = {
+            'text': 'Текст',
+            'rating': 'Оценка'
         }
 
 

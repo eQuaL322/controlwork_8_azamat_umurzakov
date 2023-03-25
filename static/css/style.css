@@ -2,6 +2,8 @@ body {
     font-family: Arial sans-serif;
     color: black;
     margin-top: 60px;
+    background: linear-gradient(to top left, powderblue, pink);
+
 }
 
 .container {

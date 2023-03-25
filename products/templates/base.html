@@ -14,11 +14,30 @@
     <div class="container mt-2">
         <ul>
             <li class="d-inline mr-4">
-                <a href="{% url 'index' %}">Главная</a>
+                <a class="link-dark" href="{% url 'index' %}">Главная</a>
             </li>
             <li class="d-inline mr-4">
-                <a href="{% url 'product_add_view' %}">Добавить продукт</a>
+                <a class="link-dark" href="{% url 'product_add_view' %}">Добавить продукт</a>
             </li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' user.pk %}" class="link-dark">Профиль</a>
+                </li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" class="link-dark" value="Выйти">
+                    </form>
+                </li>
+                <li>
+                    Привет, {{ user.username }}
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'login' %}" class="link-dark">Войти</a>
+                    <a href="{% url 'register' %}" class="link-dark">Зарегистрироваться</a>
+                </li>
+            {% endif %}
             <li class="d-inline mr-4">
                 {% block menu %}{% endblock %}
             </li>
